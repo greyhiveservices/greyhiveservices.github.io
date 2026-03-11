@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grey Hive Services | ESL Teaching and Virtual Assistant Programs</title>
+  <meta
+    name="description"
+    content="Grey Hive Services offers online ESL teaching support and virtual assistant services including admin support, scheduling, customer support, research, data entry, and digital assistance."
+  />
+  <style>
+    :root{
+      --bg:#07110d;
+      --bg2:#0b1713;
+      --panel:rgba(14,27,21,.88);
+      --panel-2:rgba(18,34,27,.95);
+      --text:#f4f7f5;
+      --muted:#b7c2bd;
+      --accent:#f2c318;
+      --accent-2:#ffe27e;
+      --line:rgba(255,255,255,.08);
+      --shadow:0 20px 40px rgba(0,0,0,.28);
+      --radius:24px;
+      --max:1180px;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(242,195,24,.10), transparent 22%),
+        radial-gradient(circle at left center, rgba(255,255,255,.03), transparent 18%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      overflow-x:hidden;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    /* ANIMATED HONEYCOMB */
+    .honeycomb{
+      position:fixed;
+      inset:0;
+      z-index:-3;
+      opacity:.42;
+      background:
+        linear-gradient(30deg, rgba(255,255,255,.05) 12%, transparent 12.5%, transparent 87%, rgba(255,255,255,.05) 87.5%, rgba(255,255,255,.05)),
+        linear-gradient(150deg, rgba(255,255,255,.05) 12%, transparent 12.5%, transparent 87%, rgba(255,255,255,.05) 87.5%, rgba(255,255,255,.05)),
+        linear-gradient(30deg, rgba(255,255,255,.04) 12%, transparent 12.5%, transparent 87%, rgba(255,255,255,.04) 87.5%, rgba(255,255,255,.04)),
+        linear-gradient(150deg, rgba(255,255,255,.04) 12%, transparent 12.5%, transparent 87%, rgba(255,255,255,.04) 87.5%, rgba(255,255,255,.04)),
+        linear-gradient(60deg, rgba(242,195,24,.10) 25%, transparent 25.5%, transparent 75%, rgba(242,195,24,.10) 75%, rgba(242,195,24,.10)),
+        linear-gradient(60deg, rgba(242,195,24,.10) 25%, transparent 25.5%, transparent 75%, rgba(242,195,24,.10) 75%, rgba(242,195,24,.10));
+      background-size:92px 160px;
+      background-position:0 0, 0 0, 46px 80px, 46px 80px, 0 0, 46px 80px;
+      animation:hiveMove 18s linear infinite;
+      pointer-events:none;
+    }
+
+    .honeycomb::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at center, rgba(242,195,24,.08), transparent 45%);
+      animation:hivePulse 5s ease-in-out infinite;
+    }
+
+    @keyframes hiveMove{
+      0%{ transform:translate3d(0,0,0); }
+      50%{ transform:translate3d(-12px,-16px,0); }
+      100%{ transform:translate3d(0,0,0); }
+    }
+
+    @keyframes hivePulse{
+      0%,100%{ opacity:.3; }
+      50%{ opacity:.7; }
+    }
+
+    /* FUTURISTIC BEE */
+    .bee-wrap{
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      pointer-events:none;
+      overflow:hidden;
+    }
+
+    .bee{
+      position:absolute;
+      top:16%;
+      left:-160px;
+      width:125px;
+      height:125px;
+      animation:beeFlight 20s linear infinite;
+      opacity:.95;
+      filter:drop-shadow(0 0 12px rgba(242,195,24,.28));
+    }
+
+    .bee svg{
+      width:100%;
+      height:100%;
+      overflow:visible;
+    }
+
+    .bee .wing-left{
+      transform-origin:58px 48px;
+      animation:wingLeft .16s ease-in-out infinite alternate;
+    }
+
+    .bee .wing-right{
+      transform-origin:62px 48px;
+      animation:wingRight .16s ease-in-out infinite alternate;
+    }
+
+    .bee .glow{
+      animation:beeGlow 2.2s ease-in-out infinite;
+    }
+
+    @keyframes beeFlight{
+      0%{ transform:translate(0,0) scale(.82) rotate(4deg); }
+      15%{ transform:translate(18vw,9vh) scale(.9) rotate(1deg); }
+      30%{ transform:translate(38vw,-2vh) scale(1) rotate(-3deg); }
+      48%{ transform:translate(58vw,10vh) scale(.96) rotate(4deg); }
+      64%{ transform:translate(75vw,-4vh) scale(1.04) rotate(-2deg); }
+      82%{ transform:translate(92vw,6vh) scale(.88) rotate(3deg); }
+      100%{ transform:translate(125vw,-2vh) scale(.8) rotate(-4deg); }
+    }
+
+    @keyframes wingLeft{
+      from{ transform:rotate(-12deg) translateY(0); }
+      to{ transform:rotate(18deg) translateY(-3px); }
+    }
+
+    @keyframes wingRight{
+      from{ transform:rotate(12deg) translateY(0); }
+      to{ transform:rotate(-18deg) translateY(-3px); }
+    }
+
+    @keyframes beeGlow{
+      0%,100%{ filter:drop-shadow(0 0 8px rgba(242,195,24,.14)); }
+      50%{ filter:drop-shadow(0 0 18px rgba(242,195,24,.4)); }
+    }
+
+    /* NAV */
+    .navbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(6,12,10,.84);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(14px);
+    }
+
+    .nav-inner{
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .brand img{
+      width:48px;
+      height:48px;
+      object-fit:cover;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background:#102019;
+    }
+
+    .brand-text strong{
+      display:block;
+      font-size:1rem;
+      letter-spacing:.08em;
+    }
+
+    .brand-text span{
+      display:block;
+      font-size:.82rem;
+      color:var(--muted);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a,
+    .nav-links button{
+      padding:10px 14px;
+      border-radius:999px;
+      background:none;
+      border:none;
+      color:#dce4e0;
+      font:inherit;
+      cursor:pointer;
+    }
+
+    .nav-links a:hover,
+    .nav-links button:hover{
+      background:rgba(255,255,255,.06);
+      color:white;
+    }
+
+    .nav-cta{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 20px;
+      border:none;
+      border-radius:14px;
+      font-weight:700;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:linear-gradient(180deg, var(--accent-2), var(--accent));
+      color:#171717;
+      box-shadow:0 12px 28px rgba(242,195,24,.22);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,.05);
+      color:white;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .menu-btn{
+      display:none;
+      width:46px;
+      height:46px;
+      border:none;
+      border-radius:14px;
+      background:rgba(255,255,255,.05);
+      color:white;
+      border:1px solid rgba(255,255,255,.08);
+      cursor:pointer;
+    }
+
+    .mobile-menu{
+      display:none;
+      padding:0 0 14px;
+    }
+
+    .mobile-menu.open{
+      display:block;
+    }
+
+    .mobile-menu a,
+    .mobile-menu button{
+      display:block;
+      width:100%;
+      text-align:left;
+      padding:14px 0;
+      color:#dbe4df;
+      background:none;
+      border:none;
+      border-top:1px solid rgba(255,255,255,.06);
+      font:inherit;
+      cursor:pointer;
+    }
+
+    /* SECTIONS */
+    section{
+      padding:56px 0;
+    }
+
+    .hero{
+      padding:52px 0 36px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      color:#dfe7e2;
+      font-size:.9rem;
+      margin-bottom:18px;
+    }
+
+    .eyebrow-dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 18px rgba(242,195,24,.55);
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:clamp(2.4rem, 5vw, 4.8rem);
+      line-height:1.03;
+      letter-spacing:-.04em;
+      max-width:11ch;
+    }
+
+    .hero h1 span{
+      color:var(--accent);
+    }
+
+    .hero p{
+      margin:18px 0 0;
+      color:var(--muted);
+      font-size:1.05rem;
+      line-height:1.75;
+      max-width:660px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:26px;
+    }
+
+    .hero-points{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:14px;
+      margin-top:26px;
+    }
+
+    .point{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:18px;
+      padding:16px;
+      box-shadow:var(--shadow);
+    }
+
+    .point strong{
+      display:block;
+      color:var(--accent);
+      margin-bottom:6px;
+      font-size:1rem;
+    }
+
+    .point span{
+      color:var(--muted);
+      line-height:1.55;
+      font-size:.94rem;
+    }
+
+    .hero-card,
+    .panel{
+      background:var(--panel);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card{
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      width:260px;
+      height:260px;
+      right:-70px;
+      bottom:-90px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(242,195,24,.14), transparent 70%);
+      pointer-events:none;
+    }
+
+    .hero-logo{
+      width:100%;
+      max-width:420px;
+      margin:0 auto 18px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.08);
+      background:#102019;
+    }
+
+    .mini-service{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:14px;
+      border-radius:18px;
+      background:rgba(7,12,10,.5);
+      border:1px solid rgba(255,255,255,.06);
+      margin-bottom:12px;
+    }
+
+    .mini-service:last-child{
+      margin-bottom:0;
+    }
+
+    .mini-icon,
+    .bullet-mark,
+    .service-icon,
+    .offer-icon,
+    .number{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:rgba(242,195,24,.12);
+      color:var(--accent);
+      flex:0 0 auto;
+      font-weight:700;
+    }
+
+    .mini-service strong{
+      display:block;
+      margin-bottom:5px;
+    }
+
+    .mini-service p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.55;
+      font-size:.94rem;
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:20px;
+      margin-bottom:26px;
+      flex-wrap:wrap;
+    }
+
+    .section-head small{
+      display:block;
+      color:var(--accent);
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      margin-bottom:8px;
+      font-size:.8rem;
+    }
+
+    .section-head h2{
+      margin:0;
+      font-size:clamp(1.7rem, 3vw, 2.7rem);
+      line-height:1.1;
+      letter-spacing:-.03em;
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      max-width:640px;
+      line-height:1.7;
+    }
+
+    .about-grid,
+    .contact-wrap{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .about-card,
+    .offer-card,
+    .process-card,
+    .faq-card,
+    .contact-info,
+    .contact-form{
+      padding:24px;
+    }
+
+    .about-card p,
+    .offer-card p,
+    .process-card p,
+    .faq-card p,
+    .contact-info p{
+      color:var(--muted);
+      line-height:1.75;
+      margin:12px 0 0;
+    }
+
+    .bullet-list,
+    .contact-list,
+    .faq-grid{
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .bullet-item,
+    .contact-line{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.05);
+      padding:14px;
+      border-radius:16px;
+    }
+
+    .bullet-item strong,
+    .contact-line strong{
+      display:block;
+      margin-bottom:4px;
+    }
+
+    .bullet-item span,
+    .contact-line span{
+      color:var(--muted);
+      line-height:1.6;
+      font-size:.95rem;
+    }
+
+    .tabs{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:22px;
+    }
+
+    .tab-btn{
+      min-height:46px;
+      padding:0 18px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.05);
+      color:white;
+      cursor:pointer;
+      font-weight:700;
+    }
+
+    .tab-btn.active{
+      background:linear-gradient(180deg, rgba(242,195,24,.23), rgba(242,195,24,.12));
+      border-color:rgba(242,195,24,.25);
+    }
+
+    .tab-pane{
+      display:none;
+    }
+
+    .tab-pane.active{
+      display:block;
+    }
+
+    .service-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .service-card{
+      border-radius:22px;
+      overflow:hidden;
+      background:var(--panel-2);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+      transition:.25s ease;
+    }
+
+    .service-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(242,195,24,.28);
+    }
+
+    .service-toggle{
+      width:100%;
+      background:none;
+      border:none;
+      color:white;
+      text-align:left;
+      cursor:pointer;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:14px;
+      padding:22px;
+    }
+
+    .service-left{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+    }
+
+    .service-title{
+      margin:0 0 8px;
+      font-size:1.08rem;
+    }
+
+    .service-summary{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:.95rem;
+    }
+
+    .chevron{
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.07);
+      transition:.25s ease;
+      flex:0 0 auto;
+    }
+
+    .service-card.open .chevron{
+      transform:rotate(180deg);
+      background:rgba(242,195,24,.12);
+      border-color:rgba(242,195,24,.25);
+    }
+
+    .service-content{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .35s ease;
+    }
+
+    .service-inner{
+      padding:0 22px 22px;
+      border-top:1px solid rgba(255,255,255,.06);
+    }
+
+    .detail-grid,
+    .field-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:16px;
+    }
+
+    .detail-box{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.05);
+      border-radius:16px;
+      padding:16px;
+    }
+
+    .detail-box h4{
+      margin:0 0 10px;
+      color:var(--accent);
+      font-size:.94rem;
+    }
+
+    .detail-box ul{
+      margin:0;
+      padding-left:18px;
+      color:#dfe6e2;
+      line-height:1.7;
+    }
+
+    .detail-box p{
+      margin:0;
+      color:#dfe6e2;
+      line-height:1.7;
+    }
+
+    .offer-grid,
+    .process-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .offer-card h3,
+    .process-card h3,
+    .faq-card h3{
+      margin:14px 0 10px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-bottom:14px;
+    }
+
+    .field.full{
+      grid-column:1 / -1;
+    }
+
+    label{
+      color:#dde4e0;
+      font-size:.92rem;
+    }
+
+    input,
+    select,
+    textarea{
+      width:100%;
+      padding:14px 16px;
+      border-radius:16px;
+      background:#0c1511;
+      color:white;
+      border:1px solid rgba(255,255,255,.08);
+      outline:none;
+      font:inherit;
+    }
+
+    textarea{
+      min-height:140px;
+      resize:vertical;
+    }
+
+    .form-note{
+      margin:12px 0 0;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:.9rem;
+    }
+
+    footer{
+      padding:30px 0 46px;
+      color:var(--muted);
+    }
+
+    .footer-bar{
+      padding-top:20px;
+      border-top:1px solid rgba(255,255,255,.08);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .footer-links button{
+      background:none;
+      border:none;
+      color:inherit;
+      font:inherit;
+      cursor:pointer;
+      padding:0;
+    }
+
+    /* TERMS MODAL */
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(3,6,5,.72);
+      backdrop-filter:blur(10px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:2000;
+    }
+
+    .modal.open{
+      display:flex;
+    }
+
+    .modal-box{
+      width:min(900px, 100%);
+      max-height:85vh;
+      overflow:auto;
+      background:linear-gradient(180deg, rgba(12,23,18,.98), rgba(9,18,14,.98));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      padding:24px;
+      position:relative;
+    }
+
+    .modal-box h2{
+      margin:0 0 8px;
+    }
+
+    .modal-box h3{
+      margin:20px 0 8px;
+      color:var(--accent);
+      font-size:1rem;
+    }
+
+    .modal-box p,
+    .modal-box li{
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .modal-close{
+      position:sticky;
+      top:0;
+      float:right;
+      width:42px;
+      height:42px;
+      border:none;
+      border-radius:12px;
+      background:rgba(255,255,255,.06);
+      color:white;
+      cursor:pointer;
+    }
+
+    @media (max-width:1080px){
+      .hero-grid,
+      .about-grid,
+      .contact-wrap{
+        grid-template-columns:1fr;
+      }
+
+      .offer-grid,
+      .process-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width:860px){
+      .nav-links,
+      .nav-cta .btn{
+        display:none;
+      }
+
+      .menu-btn{
+        display:grid;
+        place-items:center;
+      }
+
+      .hero-points,
+      .service-grid,
+      .detail-grid,
+      .field-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:640px){
+      .container{
+        width:min(var(--max), calc(100% - 20px));
+      }
+
+      .offer-grid,
+      .process-grid{
+        grid-template-columns:1fr;
+      }
+
+      .about-card,
+      .offer-card,
+      .process-card,
+      .faq-card,
+      .contact-info,
+      .contact-form,
+      .modal-box{
+        padding:20px;
+      }
+
+      .service-toggle{
+        padding:18px;
+      }
+
+      .service-inner{
+        padding:0 18px 18px;
+      }
+
+      .bee{
+        width:92px;
+        height:92px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="honeycomb"></div>
+
+  <div class="bee-wrap">
+    <div class="bee">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <defs>
+          <linearGradient id="bodyGrad" x1="0" x2="1">
+            <stop offset="0%" stop-color="#ffe27e"></stop>
+            <stop offset="100%" stop-color="#f2c318"></stop>
+          </linearGradient>
+          <linearGradient id="darkGrad" x1="0" x2="1">
+            <stop offset="0%" stop-color="#1b2522"></stop>
+            <stop offset="100%" stop-color="#30403b"></stop>
+          </linearGradient>
+        </defs>
+
+        <ellipse class="glow" cx="60" cy="68" rx="34" ry="26" fill="rgba(242,195,24,.18)"></ellipse>
+        <ellipse class="wing-left" cx="44" cy="42" rx="22" ry="11" fill="rgba(180,245,255,.34)" stroke="rgba(220,250,255,.6)" stroke-width="1.4"></ellipse>
+        <ellipse class="wing-right" cx="76" cy="42" rx="22" ry="11" fill="rgba(180,245,255,.34)" stroke="rgba(220,250,255,.6)" stroke-width="1.4"></ellipse>
+
+        <circle cx="60" cy="36" r="12" fill="url(#darkGrad)" stroke="#e6f7ff" stroke-width="1.8"></circle>
+        <line x1="54" y1="26" x2="48" y2="18" stroke="#d8f5ff" stroke-width="1.8" stroke-linecap="round"></line>
+        <line x1="66" y1="26" x2="72" y2="18" stroke="#d8f5ff" stroke-width="1.8" stroke-linecap="round"></line>
+        <circle cx="47" cy="17" r="2.5" fill="#f2c318"></circle>
+        <circle cx="73" cy="17" r="2.5" fill="#f2c318"></circle>
+
+        <path d="M60 48 C76 48 88 58 88 73 C88 90 74 103 60 110 C46 103 32 90 32 73 C32 58 44 48 60 48 Z" fill="url(#bodyGrad)" stroke="#fefefe" stroke-width="2"></path>
+        <path d="M42 66 H78" stroke="#22312d" stroke-width="7" stroke-linecap="round"></path>
+        <path d="M38 79 H82" stroke="#22312d" stroke-width="7" stroke-linecap="round"></path>
+        <path d="M46 92 H74" stroke="#22312d" stroke-width="7" stroke-linecap="round"></path>
+      </svg>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">
+        <img src="grey-hive-logo.png" alt="Grey Hive Services logo">
+        <div class="brand-text">
+          <strong>GREY HIVE SERVICES</strong>
+          <span>ESL Teaching and Virtual Assistant Programs</span>
+        </div>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#offers">What Clients Can Avail</a>
+        <a href="#contact">Contact</a>
+        <button id="openTermsBtn" type="button">Terms of Service</button>
+      </div>
+
+      <div class="nav-cta">
+        <a href="#contact" class="btn btn-primary">Inquire Now</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+
+    <div class="container mobile-menu" id="mobileMenu">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#offers">What Clients Can Avail</a>
+      <a href="#contact">Contact</a>
+      <button id="openTermsBtnMobile" type="button">Terms of Service</button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Online support services for learning and business needs
+          </div>
+
+          <h1>
+            Online <span>ESL teaching</span> and <span>virtual assistant support</span> for clients who need reliable help
+          </h1>
+
+          <p>
+            Grey Hive Services offers practical remote support for students, professionals, and growing businesses. Clients can inquire about online ESL teaching, virtual assistant support, scheduling, customer support, data entry, reports, research, and selected digital support services.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#services" class="btn btn-primary">View Services</a>
+            <a href="#contact" class="btn btn-secondary">Request a Quote</a>
+          </div>
+
+          <div class="hero-points">
+            <div class="point">
+              <strong>For students and learners</strong>
+              <span>English support, conversation practice, and guided online ESL sessions.</span>
+            </div>
+            <div class="point">
+              <strong>For business clients</strong>
+              <span>Virtual assistance, admin support, reports, coordination, and remote task handling.</span>
+            </div>
+            <div class="point">
+              <strong>Flexible and online</strong>
+              <span>Services can be arranged remotely based on client needs and workload.</span>
+            </div>
+            <div class="point">
+              <strong>Clear and organized</strong>
+              <span>We focus on communication, structure, and dependable follow-through.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img class="hero-logo" src="grey-hive-logo.png" alt="Grey Hive Services logo">
+
+          <div class="mini-service">
+            <div class="mini-icon">🎓</div>
+            <div>
+              <strong>ESL Teaching Support</strong>
+              <p>Online English learning support for conversation, guidance, and class-related assistance.</p>
+            </div>
+          </div>
+
+          <div class="mini-service">
+            <div class="mini-icon">💼</div>
+            <div>
+              <strong>Virtual Assistant Support</strong>
+              <p>Remote help for admin work, scheduling, inbox support, research, and daily operations.</p>
+            </div>
+          </div>
+
+          <div class="mini-service">
+            <div class="mini-icon">📩</div>
+            <div>
+              <strong>Direct Contact</strong>
+              <p>
+                <a href="mailto:greyhiveservices@gmail.com" style="color:var(--accent);font-weight:700;">greyhiveservices@gmail.com</a><br>
+                <a href="tel:09626011085" style="color:var(--accent);font-weight:700;">09626011085</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <small>About Grey Hive</small>
+            <h2>A website where clients can explore and avail your services</h2>
+          </div>
+          <p>
+            Grey Hive Services is presented as a remote service provider focused on online ESL teaching and virtual assistant support. The goal of this site is to help possible clients clearly understand what is offered and how to inquire.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="panel about-card">
+            <h3>What we offer online</h3>
+            <p>
+              We focus on services that can realistically be delivered online. That includes ESL teaching support, admin tasks, scheduling, customer communication, data entry, reports, coordination, research, and selected content support.
+            </p>
+
+            <div class="bullet-list">
+              <div class="bullet-item">
+                <div class="bullet-mark">✓</div>
+                <div>
+                  <strong>Online ESL support</strong>
+                  <span>Useful for students, learners, and clients who need English guidance or conversation practice.</span>
+                </div>
+              </div>
+
+              <div class="bullet-item">
+                <div class="bullet-mark">✓</div>
+                <div>
+                  <strong>Remote business assistance</strong>
+                  <span>Useful for entrepreneurs and teams that need admin, coordination, reports, and daily support.</span>
+                </div>
+              </div>
+
+              <div class="bullet-item">
+                <div class="bullet-mark">✓</div>
+                <div>
+                  <strong>Flexible service setup</strong>
+                  <span>Clients can inquire for one-time tasks, part-time support, or ongoing arrangements.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel about-card">
+            <h3>Who this is for</h3>
+            <p>
+              This site is for possible clients looking for remote support services. It is not just a portfolio. It is a service website where visitors can review what they can avail and send an inquiry.
+            </p>
+
+            <div class="bullet-list">
+              <div class="bullet-item">
+                <div class="bullet-mark">01</div>
+                <div>
+                  <strong>Students and ESL learners</strong>
+                  <span>People who need English support, conversation guidance, or online class assistance.</span>
+                </div>
+              </div>
+
+              <div class="bullet-item">
+                <div class="bullet-mark">02</div>
+                <div>
+                  <strong>Founders and professionals</strong>
+                  <span>Clients who need a virtual assistant for daily tasks, admin work, or organization.</span>
+                </div>
+              </div>
+
+              <div class="bullet-item">
+                <div class="bullet-mark">03</div>
+                <div>
+                  <strong>Small teams and online businesses</strong>
+                  <span>Clients needing support with coordination, customer service, reporting, and simple content tasks.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <small>Services</small>
+            <h2>Explore the services clients can inquire about</h2>
+          </div>
+          <p>
+            Click each box to open the details. This helps possible clients explore what is included before sending an inquiry.
+          </p>
+        </div>
+
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="esl">ESL Services</button>
+          <button class="tab-btn" data-tab="va">Virtual Assistant Services</button>
+        </div>
+
+        <div class="tab-pane active" id="tab-esl">
+          <div class="service-grid">
+            <article class="service-card open">
+              <button class="service-toggle" type="button">
+                <div class="service-left">
+                  <div class="service-icon">🗣</div>
+                  <div>
+                    <h3 class="service-title">Online ESL Teaching Support</h3>
+                    <p class="service-summary">English support for students or learners who want guided sessions, conversation practice, or learning assistance online.</p>
+                  </div>
+                </div>
+                <div class="chevron">⌄</div>
+              </button>
+              <div class="service-content" style="max-height:500px;">
+                <div class="service-inner">
+                  <div class="detail-grid">
+                    <div class="detail-box">
+                      <h4>Clients can avail</h4>
+                      <ul>
+                        <li>Online English conversation support</li>
+                        <li>Basic speaking practice sessions</li>
+                        <li>Guided learning assistance</li>
+                        <li>Class-related English support</li>
+                      </ul>
+                    </div>
+                    <div class="detail-box">
+                      <h4>Best for</h4>
+                      <p>Students, learners, and online clients who want structured English support in a remote setup.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <button class="service-toggle" type="button">
+                <div class="service-left">
+                  <div class="service-icon">📘</div>
+                  <div>
+                    <h3 class="service-title">Conversation and Speaking Practice</h3>
+                    <p class="service-summary">Simple and focused English conversation sessions for confidence building and real communication practice.</p>
+                  </div>
+                </div>
+                <div class="chevron">⌄</div>
+              </button>
+              <div class="service-content">
+                <div class="service-inner">
+                  <div class="detail-grid">
+                    <div class="detail-box">
+                      <h4>Clients can avail</h4>
+                      <ul>
+                        <li>Practice conversations</li>
+                        <li>Pronunciation support</li>
+                        <li>Confidence-building sessions</li>
+                        <li>Everyday communication guidance</li>
+                      </ul>
+                    </div>
+                    <div class="detail-box">
+                      <h4>Best for</h4>
+                      <p>Learners who want to improve how they speak, respond, and communicate in English.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <button class="service-toggle" type="button">
+                <div class="service-left">
+                  <div class="service-icon">🧑‍🏫</div>
+                  <div>
+                    <h3 class="service-title">Class and Student Support Assistance</h3>
+                    <p class="service-summary">Remote assistance related to online class coordination, student support, and learning organization.</p>
+                  </div>
+                </div>
+                <div class="chevron">⌄</div>
+              </button>
+              <div class="service-content">
+                <div class="service-inner">
+                  <div class="detail-grid">
+                    <div class="detail-box">
+                      <h4>Clients can avail</h4>
+                      <ul>
+                        <li>Online student coordination support</li>
+                        <li>Class scheduling assistance</li>
+                        <li>Follow-up support</li>
+                        <li>Basic learning admin assistance</li>
+                      </ul>
+                    </div>
+                    <div class="detail-box">
+                      <h4>Best for</h4>
+                      <p>Education-related clients who need practical online help around classes, communication, or scheduling.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <button class="service-toggle" type="button">
+                <div class="service-left">
+                  <div class="service-icon">📝</div>
+                  <div>
+                    <h3 class="service-title">Learning Support and Follow-Up</h3>
+                    <p class="service-summary">Organized support for learner follow-up, reminders, and communication tied to online teaching needs.</p>
+                  </div>
+                </div>
+                <div class="chevron">⌄</div>
+              </button>
+              <div class="service-content">
+                <div class="service-inner">
+                  <div class="detail-grid">
+                    <div class="detail-box">
+                      <h4>Clients can avail</h4>
+                      <ul>
+                        <li>Student follow-up support</li>
+                        <li>Reminder handling</li>
+                        <li>Basic communication assistance</li>
+                        <li>Organized session support</li>
+                      </ul>
+                    </div>
+                    <div class="detail-box">
+                      <h4>Best for</h4>
+                      <p>ESL-related clients who want extra structure and consistency in learner communication and support.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tab-va">
+          <div class="service-grid">
+            <article class="service-card open">
+              <button class="service-toggle" type="button">
+                <div class="service-left">
+                  <div class="service-icon">📧</div>
+                  <div>
+                    <h3 class="service-title">General Virtual Assistant Support</h3>
+                    <p class="service-summary">Remote support for daily business tasks, communication, organization, and admin work.</p>
+                  </div>
+                </div>
+                <div class="chevron">⌄</div>
+              </button>
+              <div class="service-content" style="max-height:500px;">
+                <div class="service-inner">
+                  <div class="detail-grid">
+                    <div class="detail-box">
+                      <h4>Clients can avail</h4>
+                      <ul>
+                        <li>Admin support</li>
+                        <li>Email handling assistance</li>
+                        <li>Calendar and schedule support</li>
+                        <li>Daily task coordination</li>
+                      </ul>
+                    </div>
+                    <div class="detail-box">
+                      <h4>Best for</h4>
+                      <p>Entrepreneurs, busy professionals, and small teams who need dependable remote assistance.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <button class="service-toggle" type="button">
+                <div class="service-left">
+                  <div class="service-icon">📅</div>
+                  <div>
+                    <h3 class="service-title">Scheduling and Coordination</h3>
+                    <p class="service-summary">Support for calendars, bookings, reminders, and day-to-day schedule management.</p>
+                  </div>
+                </div>
+                <div class="chevron">⌄</div>
+              </button>
+              <div class="service-content">
+                <div class="service-inner">
+                  <div class="detail-grid">
+                    <div class="detail-box">
+                      <h4>Clients can avail</h4>
+                      <ul>
+                        <li>Calendar updates</li>
+                        <li>Appointment coordination</li>
+                        <li>Reminder support</li>
+                        <li>Schedule organization</li>
+                      </ul>
+                    </div>
+                    <div class="detail-box">
+                      <h4>Best for</h4>
+                      <p>Clients who need help keeping meetings, schedules, and daily planning organized.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <button class="service-toggle" type="button">
+                <div class="service-left">
+                  <div class="service-icon">📊</div>
+                  <div>
+                    <h3 class="service-title">Data Entry and Reports</h3>
+                    <p class="service-summary">Remote support for data entry, trackers, logs, summaries, and organized reporting tasks.</p>
+                  </div>
+                </div>
+                <div class="chevron">⌄</div>
+              </button>
+              <div class="service-content">
+                <div class="service-inner">
+                  <div class="detail-grid">
+                    <div class="detail-box">
+                      <h4>Clients can avail</h4>
+                      <ul>
+                        <li>Spreadsheet updates</li>
+                        <li>Basic reports and summaries</li>
+                        <li>Logs and trackers</li>
+                        <li>Structured data entry work</li>
+                      </ul>
+                    </div>
+                    <div class="detail-box">
+                      <h4>Best for</h4>
+                      <p>Businesses that need reliable support for repetitive office tasks and organized record keeping.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <button class="service-toggle" type="button">
+                <div class="service-left">
+                  <div class="service-icon">💬</div>
+                  <div>
+                    <h3 class="service-title">Customer Support Assistance</h3>
+                    <p class="service-summary">Online help for customer communication, follow-ups, and simple support workflows.</p>
+                  </div>
+                </div>
+                <div class="chevron">⌄</div>
+              </button>
+              <div class="service-content">
+                <div class="service-inner">
+                  <div class="detail-grid">
+                    <div class="detail-box">
+                      <h4>Clients can avail</h4>
+                      <ul>
+                        <li>Email and chat support assistance</li>
+                        <li>Customer follow-up</li>
+                        <li>Basic inquiry handling</li>
+                        <li>Organized communication support</li>
+                      </ul>
+                    </div>
+                    <div class="detail-box">
+                      <h4>Best for</h4>
+                      <p>Online sellers, service businesses, and teams that need extra help replying and following up with customers.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <button class="service-toggle" type="button">
+                <div class="service-left">
+                  <div class="service-icon">🔎</div>
+                  <div>
+                    <h3 class="service-title">Research and Internet Tasks</h3>
+                    <p class="service-summary">Remote support for online research, information gathering, and simple task-based work.</p>
+                  </div>
+                </div>
+                <div class="chevron">⌄</div>
+              </button>
+              <div class="service-content">
+                <div class="service-inner">
+                  <div class="detail-grid">
+                    <div class="detail-box">
+                      <h4>Clients can avail</h4>
+                      <ul>
+                        <li>Online research</li>
+                        <li>Information gathering</li>
+                        <li>Simple documentation support</li>
+                        <li>Task-based internet work</li>
+                      </ul>
+                    </div>
+                    <div class="detail-box">
+                      <h4>Best for</h4>
+                      <p>Clients who need extra support finding information and organizing it clearly.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <button class="service-toggle" type="button">
+                <div class="service-left">
+                  <div class="service-icon">🎬</div>
+                  <div>
+                    <h3 class="service-title">Basic Content and Video Support</h3>
+                    <p class="service-summary">Selected support for social media content tasks and simple video-related work depending on client needs.</p>
+                  </div>
+                </div>
+                <div class="chevron">⌄</div>
+              </button>
+              <div class="service-content">
+                <div class="service-inner">
+                  <div class="detail-grid">
+                    <div class="detail-box">
+                      <h4>Clients can avail</h4>
+                      <ul>
+                        <li>Basic content organization</li>
+                        <li>Simple social media assistance</li>
+                        <li>Light video support tasks</li>
+                        <li>Creative admin help</li>
+                      </ul>
+                    </div>
+                    <div class="detail-box">
+                      <h4>Best for</h4>
+                      <p>Small businesses and online creators who need support with simple digital content work.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="offers">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <small>What Clients Can Avail</small>
+            <h2>Clear service categories for possible clients</h2>
+          </div>
+          <p>
+            This section makes it easy for visitors to see what they can inquire about right away.
+          </p>
+        </div>
+
+        <div class="offer-grid">
+          <div class="panel offer-card">
+            <div class="offer-icon">🎓</div>
+            <h3>Online ESL Assistance</h3>
+            <p>Clients can inquire about English conversation practice, guided support, learning follow-up, and class-related assistance.</p>
+          </div>
+
+          <div class="panel offer-card">
+            <div class="offer-icon">💼</div>
+            <h3>Virtual Assistant Packages</h3>
+            <p>Clients can ask for help with admin tasks, email support, coordination, reports, data entry, and daily remote assistance.</p>
+          </div>
+
+          <div class="panel offer-card">
+            <div class="offer-icon">🧩</div>
+            <h3>Custom Remote Support</h3>
+            <p>Clients can request a custom setup if they need a mix of ESL, admin, customer support, or content-related help.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <small>How It Works</small>
+            <h2>Simple steps for possible clients</h2>
+          </div>
+          <p>
+            A service website should make the next step easy. This section helps visitors understand how to avail your services.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <div class="panel process-card">
+            <div class="number">01</div>
+            <h3>Explore the services</h3>
+            <p>Visitors can check the service categories and open each card to see what is included.</p>
+          </div>
+
+          <div class="panel process-card">
+            <div class="number">02</div>
+            <h3>Send an inquiry</h3>
+            <p>Clients fill out the contact form and tell you what kind of support they need.</p>
+          </div>
+
+          <div class="panel process-card">
+            <div class="number">03</div>
+            <h3>Discuss the setup</h3>
+            <p>You review the request, confirm availability, and discuss the service arrangement that fits the client.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <small>FAQ</small>
+            <h2>Questions possible clients may ask</h2>
+          </div>
+          <p>
+            This helps make the website feel complete and answers the most common first questions.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="panel faq-card">
+            <h3>Are all services online only</h3>
+            <p>Yes. The website focuses on services that can realistically be delivered online or remotely.</p>
+          </div>
+
+          <div class="panel faq-card">
+            <h3>Can I request only one service</h3>
+            <p>Yes. Clients can inquire about one specific service or ask for a custom combination of support.</p>
+          </div>
+
+          <div class="panel faq-card">
+            <h3>Do you offer ongoing support</h3>
+            <p>Yes. Possible clients can inquire about one-time tasks, part-time support, or ongoing assistance depending on availability.</p>
+          </div>
+
+          <div class="panel faq-card">
+            <h3>How do I get started</h3>
+            <p>Use the inquiry form below and describe what kind of support you need. That makes it easier to discuss the next steps.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <small>Contact</small>
+            <h2>Send an inquiry to avail our services</h2>
+          </div>
+          <p>
+            Clients can contact you directly by email, phone, or the inquiry form below.
+          </p>
+        </div>
+
+        <div class="contact-wrap">
+          <div class="panel contact-info">
+            <h3>Grey Hive Services</h3>
+            <p>
+              Reach out for ESL support, virtual assistant work, admin help, customer support assistance, or custom remote service requests.
+            </p>
+
+            <div class="contact-list">
+              <div class="contact-line">
+                <div class="mini-icon">📩</div>
+                <div>
+                  <strong>Email inquiries</strong>
+                  <span>
+                    <a href="mailto:greyhiveservices@gmail.com" style="color:var(--accent);font-weight:700;">greyhiveservices@gmail.com</a>
+                  </span>
+                </div>
+              </div>
+
+              <div class="contact-line">
+                <div class="mini-icon">📞</div>
+                <div>
+                  <strong>Contact number</strong>
+                  <span>
+                    <a href="tel:09626011085" style="color:var(--accent);font-weight:700;">09626011085</a>
+                  </span>
+                </div>
+              </div>
+
+              <div class="contact-line">
+                <div class="mini-icon">🌐</div>
+                <div>
+                  <strong>Online setup</strong>
+                  <span>All services shown on this website are positioned as remote or online services.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form class="panel contact-form" action="https://formsubmit.co/greyhiveservices@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Grey Hive Services inquiry">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="name">Full name</label>
+                <input id="name" name="name" type="text" placeholder="Your full name" required>
+              </div>
+
+              <div class="field">
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required>
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone number</label>
+                <input id="phone" name="phone" type="text" placeholder="Your contact number">
+              </div>
+
+              <div class="field">
+                <label for="service">Service needed</label>
+                <select id="service" name="service" required>
+                  <option value="">Select a service</option>
+                  <option>Online ESL Teaching Support</option>
+                  <option>Conversation and Speaking Practice</option>
+                  <option>General Virtual Assistant Support</option>
+                  <option>Scheduling and Coordination</option>
+                  <option>Data Entry and Reports</option>
+                  <option>Customer Support Assistance</option>
+                  <option>Research and Internet Tasks</option>
+                  <option>Basic Content and Video Support</option>
+                  <option>Custom Remote Support</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label for="message">Tell us what you need</label>
+                <textarea id="message" name="message" placeholder="Describe the service you want to avail" required></textarea>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Send Inquiry</button>
+            <p class="form-note">
+              Messages from this form will go to <strong>greyhiveservices@gmail.com</strong>.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-bar">
+      <div>
+        Grey Hive Services © 2026. ESL Teaching and Virtual Assistant Programs.<br>
+        <a href="mailto:greyhiveservices@gmail.com">greyhiveservices@gmail.com</a> ·
+        <a href="tel:09626011085">09626011085</a>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#offers">What Clients Can Avail</a>
+        <button id="openTermsBtnFooter" type="button">Terms of Service</button>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal" id="termsModal" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" id="closeTermsBtn" aria-label="Close terms">✕</button>
+      <h2>Terms of Service</h2>
+      <p>
+        These Terms of Service apply to inquiries, bookings, and remote support services offered by Grey Hive Services through this website and direct communication channels.
+      </p>
+
+      <h3>1. Services</h3>
+      <p>
+        Grey Hive Services offers online ESL teaching support, virtual assistant support, and related remote services described on this website. All services are subject to availability, schedule confirmation, and mutual agreement on the exact scope of work.
+      </p>
+
+      <h3>2. Inquiry and booking</h3>
+      <p>
+        Sending an inquiry does not automatically confirm a booking. Services begin only after the requested work, schedule, and setup are reviewed and accepted by both parties.
+      </p>
+
+      <h3>3. Scope of work</h3>
+      <p>
+        Work will be limited to the service scope agreed upon before the start of service. Any additional tasks or major changes may require a revised agreement, new timeline, or updated rate.
+      </p>
+
+      <h3>4. Client responsibilities</h3>
+      <ul>
+        <li>Provide accurate details about the requested service.</li>
+        <li>Respond in a timely manner when clarification is needed.</li>
+        <li>Provide materials, instructions, or access only when relevant to the agreed work.</li>
+        <li>Use the services for lawful and professional purposes only.</li>
+      </ul>
+
+      <h3>5. Communication</h3>
+      <p>
+        Grey Hive Services aims to maintain clear and professional communication. Response times may vary depending on workload, time zone, and service schedule.
+      </p>
+
+      <h3>6. Payments and fees</h3>
+      <p>
+        Rates, packages, and payment terms will be discussed directly with the client before service begins. No work that requires payment will be considered confirmed until the agreed payment arrangement is accepted.
+      </p>
+
+      <h3>7. Revisions and adjustments</h3>
+      <p>
+        Reasonable adjustments may be accommodated depending on the nature of the service. Major revisions, additional deliverables, or changes outside the agreed scope may be treated as separate work.
+      </p>
+
+      <h3>8. Cancellations and rescheduling</h3>
+      <p>
+        Clients should give advance notice for cancellations or rescheduling whenever possible. Repeated last-minute cancellations may affect future scheduling availability.
+      </p>
+
+      <h3>9. Confidentiality</h3>
+      <p>
+        Grey Hive Services will treat client information and materials with reasonable care and confidentiality. Clients should also avoid sharing unnecessary sensitive information through the website form.
+      </p>
+
+      <h3>10. No guarantee of specific outcomes</h3>
+      <p>
+        Grey Hive Services provides support, coordination, and professional assistance, but cannot guarantee specific business results, academic outcomes, sales performance, or similar external results.
+      </p>
+
+      <h3>11. Acceptable use</h3>
+      <p>
+        Services may not be used for unlawful, abusive, deceptive, harmful, or unethical activity. Grey Hive Services reserves the right to decline or discontinue requests that are inappropriate or outside the intended service scope.
+      </p>
+
+      <h3>12. Changes to these terms</h3>
+      <p>
+        These terms may be updated from time to time. The latest version shown on this website will apply to new inquiries and future service arrangements.
+      </p>
+
+      <h3>13. Contact</h3>
+      <p>
+        For questions about these terms, contact Grey Hive Services at
+        <a href="mailto:greyhiveservices@gmail.com" style="color:var(--accent);font-weight:700;">greyhiveservices@gmail.com</a>
+        or
+        <a href="tel:09626011085" style="color:var(--accent);font-weight:700;">09626011085</a>.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tab = button.dataset.tab;
+
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        tabPanes.forEach(pane => pane.classList.remove('active'));
+        document.getElementById('tab-' + tab).classList.add('active');
+
+        document.querySelectorAll('#tab-' + tab + ' .service-card.open .service-content').forEach(content => {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        });
+      });
+    });
+
+    const serviceCards = document.querySelectorAll('.service-card');
+
+    serviceCards.forEach(card => {
+      const toggle = card.querySelector('.service-toggle');
+      const content = card.querySelector('.service-content');
+
+      if(card.classList.contains('open')){
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+
+      toggle.addEventListener('click', () => {
+        const parentGrid = card.closest('.service-grid');
+        const isOpen = card.classList.contains('open');
+
+        parentGrid.querySelectorAll('.service-card').forEach(otherCard => {
+          otherCard.classList.remove('open');
+          otherCard.querySelector('.service-content').style.maxHeight = null;
+        });
+
+        if(!isOpen){
+          card.classList.add('open');
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
+      });
+    });
+
+    const termsModal = document.getElementById('termsModal');
+    const closeTermsBtn = document.getElementById('closeTermsBtn');
+    const openTermsButtons = [
+      document.getElementById('openTermsBtn'),
+      document.getElementById('openTermsBtnMobile'),
+      document.getElementById('openTermsBtnFooter')
+    ].filter(Boolean);
+
+    openTermsButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        termsModal.classList.add('open');
+        termsModal.setAttribute('aria-hidden', 'false');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    closeTermsBtn.addEventListener('click', () => {
+      termsModal.classList.remove('open');
+      termsModal.setAttribute('aria-hidden', 'true');
+    });
+
+    termsModal.addEventListener('click', e => {
+      if(e.target === termsModal){
+        termsModal.classList.remove('open');
+        termsModal.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    document.addEventListener('keydown', e => {
+      if(e.key === 'Escape'){
+        termsModal.classList.remove('open');
+        termsModal.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      document.querySelectorAll('.service-card.open .service-content').forEach(content => {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      });
+    });
+  </script>
+</body>
+</html>
