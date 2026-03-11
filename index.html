@@ -20,18 +20,11 @@
       --accent-2:#ffe27e;
       --line:rgba(255,255,255,.08);
       --shadow:0 20px 40px rgba(0,0,0,.28);
-      --radius:24px;
       --max:1180px;
     }
 
-    *{
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family:Arial, Helvetica, sans-serif;
@@ -43,20 +36,9 @@
       overflow-x:hidden;
     }
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    img{
-      max-width:100%;
-      display:block;
-    }
-
-    .container{
-      width:min(var(--max), calc(100% - 28px));
-      margin:0 auto;
-    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max), calc(100% - 28px));margin:0 auto}
 
     /* ANIMATED HONEYCOMB */
     .honeycomb{
@@ -86,14 +68,14 @@
     }
 
     @keyframes hiveMove{
-      0%{ transform:translate3d(0,0,0); }
-      50%{ transform:translate3d(-12px,-16px,0); }
-      100%{ transform:translate3d(0,0,0); }
+      0%{transform:translate3d(0,0,0)}
+      50%{transform:translate3d(-12px,-16px,0)}
+      100%{transform:translate3d(0,0,0)}
     }
 
     @keyframes hivePulse{
-      0%,100%{ opacity:.3; }
-      50%{ opacity:.7; }
+      0%,100%{opacity:.3}
+      50%{opacity:.7}
     }
 
     /* FUTURISTIC BEE */
@@ -137,28 +119,28 @@
     }
 
     @keyframes beeFlight{
-      0%{ transform:translate(0,0) scale(.82) rotate(4deg); }
-      15%{ transform:translate(18vw,9vh) scale(.9) rotate(1deg); }
-      30%{ transform:translate(38vw,-2vh) scale(1) rotate(-3deg); }
-      48%{ transform:translate(58vw,10vh) scale(.96) rotate(4deg); }
-      64%{ transform:translate(75vw,-4vh) scale(1.04) rotate(-2deg); }
-      82%{ transform:translate(92vw,6vh) scale(.88) rotate(3deg); }
-      100%{ transform:translate(125vw,-2vh) scale(.8) rotate(-4deg); }
+      0%{transform:translate(0,0) scale(.82) rotate(4deg)}
+      15%{transform:translate(18vw,9vh) scale(.9) rotate(1deg)}
+      30%{transform:translate(38vw,-2vh) scale(1) rotate(-3deg)}
+      48%{transform:translate(58vw,10vh) scale(.96) rotate(4deg)}
+      64%{transform:translate(75vw,-4vh) scale(1.04) rotate(-2deg)}
+      82%{transform:translate(92vw,6vh) scale(.88) rotate(3deg)}
+      100%{transform:translate(125vw,-2vh) scale(.8) rotate(-4deg)}
     }
 
     @keyframes wingLeft{
-      from{ transform:rotate(-12deg) translateY(0); }
-      to{ transform:rotate(18deg) translateY(-3px); }
+      from{transform:rotate(-12deg) translateY(0)}
+      to{transform:rotate(18deg) translateY(-3px)}
     }
 
     @keyframes wingRight{
-      from{ transform:rotate(12deg) translateY(0); }
-      to{ transform:rotate(-18deg) translateY(-3px); }
+      from{transform:rotate(12deg) translateY(0)}
+      to{transform:rotate(-18deg) translateY(-3px)}
     }
 
     @keyframes beeGlow{
-      0%,100%{ filter:drop-shadow(0 0 8px rgba(242,195,24,.14)); }
-      50%{ filter:drop-shadow(0 0 18px rgba(242,195,24,.4)); }
+      0%,100%{filter:drop-shadow(0 0 8px rgba(242,195,24,.14))}
+      50%{filter:drop-shadow(0 0 18px rgba(242,195,24,.4))}
     }
 
     /* NAV */
@@ -256,14 +238,31 @@
       box-shadow:0 12px 28px rgba(242,195,24,.22);
     }
 
-    .btn-primary:hover{
-      transform:translateY(-2px);
-    }
+    .btn-primary:hover{transform:translateY(-2px)}
 
     .btn-secondary{
       background:rgba(255,255,255,.05);
       color:white;
       border:1px solid rgba(255,255,255,.08);
+    }
+
+    .social-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:44px;
+      padding:0 16px;
+      border-radius:12px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      color:white;
+      font-weight:600;
+      transition:.2s ease;
+    }
+
+    .social-btn:hover{
+      background:rgba(255,255,255,.09);
+      transform:translateY(-2px);
     }
 
     .menu-btn{
@@ -283,9 +282,7 @@
       padding:0 0 14px;
     }
 
-    .mobile-menu.open{
-      display:block;
-    }
+    .mobile-menu.open{display:block}
 
     .mobile-menu a,
     .mobile-menu button{
@@ -302,13 +299,9 @@
     }
 
     /* SECTIONS */
-    section{
-      padding:56px 0;
-    }
+    section{padding:56px 0}
 
-    .hero{
-      padding:52px 0 36px;
-    }
+    .hero{padding:52px 0 36px}
 
     .hero-grid{
       display:grid;
@@ -346,9 +339,7 @@
       max-width:11ch;
     }
 
-    .hero h1 span{
-      color:var(--accent);
-    }
+    .hero h1 span{color:var(--accent)}
 
     .hero p{
       margin:18px 0 0;
@@ -363,6 +354,13 @@
       flex-wrap:wrap;
       gap:14px;
       margin-top:26px;
+    }
+
+    .hero-social{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
     }
 
     .hero-points{
@@ -439,9 +437,7 @@
       margin-bottom:12px;
     }
 
-    .mini-service:last-child{
-      margin-bottom:0;
-    }
+    .mini-service:last-child{margin-bottom:0}
 
     .mini-icon,
     .bullet-mark,
@@ -584,13 +580,8 @@
       border-color:rgba(242,195,24,.25);
     }
 
-    .tab-pane{
-      display:none;
-    }
-
-    .tab-pane.active{
-      display:block;
-    }
+    .tab-pane{display:none}
+    .tab-pane.active{display:block}
 
     .service-grid{
       display:grid;
@@ -727,9 +718,7 @@
       margin-bottom:14px;
     }
 
-    .field.full{
-      grid-column:1 / -1;
-    }
+    .field.full{grid-column:1 / -1}
 
     label{
       color:#dde4e0;
@@ -752,6 +741,21 @@
     textarea{
       min-height:140px;
       resize:vertical;
+    }
+
+    .checkbox-line{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:.92rem;
+    }
+
+    .checkbox-line input{
+      width:auto;
+      margin-top:3px;
+      padding:0;
     }
 
     .form-note{
@@ -805,9 +809,7 @@
       z-index:2000;
     }
 
-    .modal.open{
-      display:flex;
-    }
+    .modal.open{display:flex}
 
     .modal-box{
       width:min(900px, 100%);
@@ -821,10 +823,7 @@
       position:relative;
     }
 
-    .modal-box h2{
-      margin:0 0 8px;
-    }
-
+    .modal-box h2{margin:0 0 8px}
     .modal-box h3{
       margin:20px 0 8px;
       color:var(--accent);
@@ -902,18 +901,9 @@
         padding:20px;
       }
 
-      .service-toggle{
-        padding:18px;
-      }
-
-      .service-inner{
-        padding:0 18px 18px;
-      }
-
-      .bee{
-        width:92px;
-        height:92px;
-      }
+      .service-toggle{padding:18px}
+      .service-inner{padding:0 18px 18px}
+      .bee{width:92px;height:92px}
     }
   </style>
 </head>
@@ -933,17 +923,14 @@
             <stop offset="100%" stop-color="#30403b"></stop>
           </linearGradient>
         </defs>
-
         <ellipse class="glow" cx="60" cy="68" rx="34" ry="26" fill="rgba(242,195,24,.18)"></ellipse>
         <ellipse class="wing-left" cx="44" cy="42" rx="22" ry="11" fill="rgba(180,245,255,.34)" stroke="rgba(220,250,255,.6)" stroke-width="1.4"></ellipse>
         <ellipse class="wing-right" cx="76" cy="42" rx="22" ry="11" fill="rgba(180,245,255,.34)" stroke="rgba(220,250,255,.6)" stroke-width="1.4"></ellipse>
-
         <circle cx="60" cy="36" r="12" fill="url(#darkGrad)" stroke="#e6f7ff" stroke-width="1.8"></circle>
         <line x1="54" y1="26" x2="48" y2="18" stroke="#d8f5ff" stroke-width="1.8" stroke-linecap="round"></line>
         <line x1="66" y1="26" x2="72" y2="18" stroke="#d8f5ff" stroke-width="1.8" stroke-linecap="round"></line>
         <circle cx="47" cy="17" r="2.5" fill="#f2c318"></circle>
         <circle cx="73" cy="17" r="2.5" fill="#f2c318"></circle>
-
         <path d="M60 48 C76 48 88 58 88 73 C88 90 74 103 60 110 C46 103 32 90 32 73 C32 58 44 48 60 48 Z" fill="url(#bodyGrad)" stroke="#fefefe" stroke-width="2"></path>
         <path d="M42 66 H78" stroke="#22312d" stroke-width="7" stroke-linecap="round"></path>
         <path d="M38 79 H82" stroke="#22312d" stroke-width="7" stroke-linecap="round"></path>
@@ -1007,6 +994,11 @@
             <a href="#contact" class="btn btn-secondary">Request a Quote</a>
           </div>
 
+          <div class="hero-social">
+            <a class="social-btn" href="https://wa.me/639626011085" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+            <a class="social-btn" href="https://www.facebook.com/profile.php?id=61579705280475" target="_blank" rel="noopener noreferrer">Facebook Page</a>
+          </div>
+
           <div class="hero-points">
             <div class="point">
               <strong>For students and learners</strong>
@@ -1052,7 +1044,9 @@
               <strong>Direct Contact</strong>
               <p>
                 <a href="mailto:greyhiveservices@gmail.com" style="color:var(--accent);font-weight:700;">greyhiveservices@gmail.com</a><br>
-                <a href="tel:09626011085" style="color:var(--accent);font-weight:700;">09626011085</a>
+                <a href="tel:09626011085" style="color:var(--accent);font-weight:700;">09626011085</a><br>
+                <a href="https://wa.me/639626011085" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700;">WhatsApp: 09626011085</a><br>
+                <a href="https://www.facebook.com/profile.php?id=61579705280475" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700;">Facebook: GreyHive Services</a>
               </p>
             </div>
           </div>
@@ -1601,7 +1595,7 @@
             <h2>Send an inquiry to avail our services</h2>
           </div>
           <p>
-            Clients can contact you directly by email, phone, or the inquiry form below.
+            Clients can contact you directly by email, phone, WhatsApp, Facebook, or the inquiry form below.
           </p>
         </div>
 
@@ -1634,6 +1628,26 @@
               </div>
 
               <div class="contact-line">
+                <div class="mini-icon">💬</div>
+                <div>
+                  <strong>WhatsApp</strong>
+                  <span>
+                    <a href="https://wa.me/639626011085" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700;">09626011085</a>
+                  </span>
+                </div>
+              </div>
+
+              <div class="contact-line">
+                <div class="mini-icon">📘</div>
+                <div>
+                  <strong>Facebook Page</strong>
+                  <span>
+                    <a href="https://www.facebook.com/profile.php?id=61579705280475" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700;">GreyHive Services</a>
+                  </span>
+                </div>
+              </div>
+
+              <div class="contact-line">
                 <div class="mini-icon">🌐</div>
                 <div>
                   <strong>Online setup</strong>
@@ -1647,6 +1661,7 @@
             <input type="hidden" name="_subject" value="New Grey Hive Services inquiry">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://jayarejanesablayan.github.io/?sent=true">
 
             <div class="field-grid">
               <div class="field">
@@ -1665,6 +1680,11 @@
               </div>
 
               <div class="field">
+                <label for="whatsapp">WhatsApp number</label>
+                <input id="whatsapp" name="whatsapp" type="text" placeholder="Your WhatsApp number or N/A if none">
+              </div>
+
+              <div class="field">
                 <label for="service">Service needed</label>
                 <select id="service" name="service" required>
                   <option value="">Select a service</option>
@@ -1680,15 +1700,90 @@
                 </select>
               </div>
 
+              <div class="field">
+                <label for="client_type">Client type</label>
+                <select id="client_type" name="client_type">
+                  <option value="">Select client type</option>
+                  <option>Individual Student</option>
+                  <option>Business Owner</option>
+                  <option>ESL School</option>
+                  <option>Startup Company</option>
+                  <option>Agency</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="timezone">Your timezone</label>
+                <select id="timezone" name="timezone" required>
+                  <option value="">Select your timezone</option>
+                  <option value="UTC-12">UTC-12 Baker Island</option>
+                  <option value="UTC-11">UTC-11 American Samoa</option>
+                  <option value="UTC-10">UTC-10 Hawaii</option>
+                  <option value="UTC-9">UTC-9 Alaska</option>
+                  <option value="UTC-8">UTC-8 Pacific Time (USA)</option>
+                  <option value="UTC-7">UTC-7 Mountain Time (USA)</option>
+                  <option value="UTC-6">UTC-6 Central Time (USA)</option>
+                  <option value="UTC-5">UTC-5 Eastern Time (USA)</option>
+                  <option value="UTC-4">UTC-4 Atlantic Time</option>
+                  <option value="UTC-3">UTC-3 Brazil / Argentina</option>
+                  <option value="UTC-2">UTC-2 South Georgia</option>
+                  <option value="UTC-1">UTC-1 Azores</option>
+                  <option value="UTC+0">UTC+0 United Kingdom</option>
+                  <option value="UTC+1">UTC+1 Central Europe</option>
+                  <option value="UTC+2">UTC+2 Eastern Europe</option>
+                  <option value="UTC+3">UTC+3 Middle East</option>
+                  <option value="UTC+4">UTC+4 UAE</option>
+                  <option value="UTC+5">UTC+5 Pakistan</option>
+                  <option value="UTC+5:30">UTC+5:30 India</option>
+                  <option value="UTC+6">UTC+6 Bangladesh</option>
+                  <option value="UTC+7">UTC+7 Thailand / Vietnam</option>
+                  <option value="UTC+8">UTC+8 Philippines / Singapore / China</option>
+                  <option value="UTC+9">UTC+9 Japan / Korea</option>
+                  <option value="UTC+10">UTC+10 Australia</option>
+                  <option value="UTC+11">UTC+11 Solomon Islands</option>
+                  <option value="UTC+12">UTC+12 New Zealand</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="preferred_time">Preferred class or work time</label>
+                <select id="preferred_time" name="preferred_time">
+                  <option value="">Select preferred time</option>
+                  <option>Morning</option>
+                  <option>Afternoon</option>
+                  <option>Evening</option>
+                  <option>Flexible</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="setup">Preferred setup</label>
+                <select id="setup" name="setup">
+                  <option value="">Select setup</option>
+                  <option>One-time task</option>
+                  <option>Part-time support</option>
+                  <option>Ongoing support</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+
               <div class="field full">
                 <label for="message">Tell us what you need</label>
                 <textarea id="message" name="message" placeholder="Describe the service you want to avail" required></textarea>
+              </div>
+
+              <div class="field full">
+                <label class="checkbox-line">
+                  <input type="checkbox" required>
+                  <span>I agree to the Terms of Service and understand that all services are subject to availability and discussion.</span>
+                </label>
               </div>
             </div>
 
             <button class="btn btn-primary" type="submit">Send Inquiry</button>
             <p class="form-note">
-              Messages from this form will go to <strong>greyhiveservices@gmail.com</strong>.
+              Messages from this form will go to <strong>greyhiveservices@gmail.com</strong>. First-time setup may require activating FormSubmit from your email inbox.
             </p>
           </form>
         </div>
@@ -1701,7 +1796,9 @@
       <div>
         Grey Hive Services © 2026. ESL Teaching and Virtual Assistant Programs.<br>
         <a href="mailto:greyhiveservices@gmail.com">greyhiveservices@gmail.com</a> ·
-        <a href="tel:09626011085">09626011085</a>
+        <a href="tel:09626011085">09626011085</a> ·
+        <a href="https://wa.me/639626011085" target="_blank" rel="noopener noreferrer">WhatsApp</a> ·
+        <a href="https://www.facebook.com/profile.php?id=61579705280475" target="_blank" rel="noopener noreferrer">GreyHive Services</a>
       </div>
       <div class="footer-links">
         <a href="#home">Home</a>
@@ -1786,9 +1883,11 @@
       <h3>13. Contact</h3>
       <p>
         For questions about these terms, contact Grey Hive Services at
-        <a href="mailto:greyhiveservices@gmail.com" style="color:var(--accent);font-weight:700;">greyhiveservices@gmail.com</a>
+        <a href="mailto:greyhiveservices@gmail.com" style="color:var(--accent);font-weight:700;">greyhiveservices@gmail.com</a>,
+        <a href="tel:09626011085" style="color:var(--accent);font-weight:700;">09626011085</a>,
+        <a href="https://wa.me/639626011085" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700;">WhatsApp</a>,
         or
-        <a href="tel:09626011085" style="color:var(--accent);font-weight:700;">09626011085</a>.
+        <a href="https://www.facebook.com/profile.php?id=61579705280475" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700;">GreyHive Services on Facebook</a>.
       </p>
     </div>
   </div>
